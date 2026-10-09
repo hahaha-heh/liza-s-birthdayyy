@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Happy Birthday 🎂</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(circle at center,
+                    #ff2382,
+                    #df0060 60%,
+                    #b5004e);
+
+            font-family: Arial, sans-serif;
+        }
+
+
+        /* =================================
+   CARD
+================================= */
+
+        .card {
+
+            position: relative;
+
+            width: 90vw;
+            max-width: 1000px;
+
+            height: 650px;
+
+            background: #fff5ec;
+
+            border-radius: 35px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, .2);
+
+            opacity: 0;
+
+            transform:
+                translateY(80px) scale(.85);
+
+            animation:
+                cardIn 1.2s ease forwards;
+        }
+
+
+        @keyframes cardIn {
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0) scale(1);
+            }
+        }
+
+
+        /* =================================
+   MESSAGE
+================================= */
+
+        .message {
+
+            position: absolute;
+
+            left: 7%;
+
+            top: 90px;
+
+            width: 40%;
+
+            z-index: 20;
+        }
+
+
+        .message h2 {
+
+            color: #df0750;
+
+            font-size: 25px;
+
+            line-height: 1.4;
+
+            margin-bottom: 30px;
+
+            opacity: 0;
+
+            transform: translateY(20px);
+
+            animation:
+                textIn .8s 5s forwards;
+        }
+
+
+        .message h2 span {
+
+            color: #df0750;
+        }
+
+
+        .message p {
+
+            color: #555;
+
+            font-size: 18px;
+
+            line-height: 1.7;
+
+            margin-bottom: 18px;
+
+            opacity: 0;
+
+            transform: translateY(15px);
+
+            animation:
+                textIn .8s 5.5s forwards;
+        }
+
+
+        .message p:nth-child(3) {
+
+            animation-delay: 6s;
+        }
+
+
+        .message .ending {
+
+            font-style: italic;
+
+            color: #df0750;
+
+            animation-delay: 6.5s;
+        }
+
+
+        @keyframes textIn {
+
+            to {
+
+                opacity: 1;
+
+                transform: translateY(0);
+            }
+        }
+
+
+        /* =================================
+   TREE
+================================= */
+
+        .tree {
+
+            position: absolute;
+
+            right: 0;
+
+            bottom: 35px;
+
+            width: 58%;
+
+            height: 85%;
+
+            z-index: 5;
+        }
+
+
+        /* =================================
+   TREE BRANCHES
+================================= */
+
+        .tree-svg {
+
+            position: absolute;
+
+            width: 100%;
+
+            height: 100%;
+
+            left: 0;
+
+            top: 0;
+
+            overflow: visible;
+
+            z-index: 2;
+        }
+
+
+        .branch {
+
+            fill: none;
+
+            stroke: #75401e;
+
+            stroke-width: 14;
+
+            stroke-linecap: round;
+
+            stroke-linejoin: round;
+
+            stroke-dasharray: 600;
+
+            stroke-dashoffset: 600;
+
+            animation:
+                growBranch 1.5s 1s ease-out forwards;
+        }
+
+
+        @keyframes growBranch {
+
+            to {
+
+                stroke-dashoffset: 0;
+            }
+        }
+
+
+        /* =================================
+   HEART TREE
+================================= */
+
+        #heartTree {
+
+            position: absolute;
+
+            left: 4%;
+
+            top: 0;
+
+            width: 92%;
+
+            height: 65%;
+
+            z-index: 10;
+        }
+
+
+        .heart {
+            position: absolute;
+
+            display: block;
+
+            line-height: 1;
+
+            color: #ed174d;
+
+            opacity: 0;
+
+            z-index: 20;
+
+            transform:
+                translate(-50%, -50%) rotate(var(--rotation)) scale(0);
+
+            animation:
+                heartAppear .6s cubic-bezier(.17, .89, .32, 1.35) forwards;
+        }
+
+
+        /* Different shades */
+
+        .heart:nth-child(3n) {
+            color: #ff315f;
+        }
+
+        .heart:nth-child(5n) {
+            color: #d9003f;
+        }
+
+        .heart:nth-child(7n) {
+            color: #ff5578;
+        }
+
+        .heart:nth-child(11n) {
+            color: #f51d50;
+        }
+
+        .heart:nth-child(13n) {
+            color: #ff7290;
+        }
+
+
+        @keyframes heartAppear {
+
+            0% {
+
+                opacity: 0;
+
+                transform:
+                    translate(-50%, -50%) rotate(var(--rotation)) scale(0);
+            }
+
+            65% {
+
+                opacity: 1;
+
+                transform:
+                    translate(-50%, -50%) rotate(var(--rotation)) scale(1.25);
+            }
+
+            100% {
+
+                opacity: 1;
+
+                transform:
+                    translate(-50%, -50%) rotate(var(--rotation)) scale(1);
+            }
+        }
+
+
+        /* =================================
+   FLOATING HEARTS
+================================= */
+
+        .floating-heart {
+
+            position: absolute;
+
+            color: #ff4b72;
+
+            font-size: 14px;
+
+            opacity: 0;
+
+            z-index: 15;
+
+            animation:
+                floating 4s ease-in-out infinite;
+        }
+
+
+        @keyframes floating {
+
+            0% {
+
+                opacity: 0;
+
+                transform:
+                    translateY(20px) scale(.6);
+            }
+
+            25% {
+
+                opacity: .8;
+            }
+
+            100% {
+
+                opacity: 0;
+
+                transform:
+                    translateY(-100px) scale(1);
+            }
+        }
+
+
+        /* =================================
+   COUNTDOWN
+================================= */
+
+        .countdown {
+
+            position: absolute;
+
+            left: 7%;
+
+            bottom: 55px;
+
+            z-index: 20;
+
+            color: #555;
+        }
+
+
+        .count-title {
+
+            font-size: 16px;
+
+            margin-bottom: 8px;
+        }
+
+
+        #timer {
+
+            font-size: 20px;
+
+            color: #df0750;
+
+            font-weight: bold;
+        }
+
+
+        /* =================================
+   GROUND
+================================= */
+
+        .ground {
+
+            position: absolute;
+
+            left: 4%;
+
+            right: 4%;
+
+            bottom: 35px;
+
+            height: 2px;
+
+            background: #493b35;
+
+            opacity: .8;
+        }
+
+
+        /* =================================
+   MOBILE
+================================= */
+
+        @media(max-width:700px) {
+
+            .card {
+
+                width: 94vw;
+
+                height: 85vh;
+
+                min-height: 550px;
+            }
+
+
+            .message {
+
+                left: 7%;
+
+                top: 50px;
+
+                width: 50%;
+            }
+
+
+            .message h2 {
+
+                font-size: 18px;
+            }
+
+
+            .message p {
+
+                font-size: 14px;
+            }
+
+
+            .tree {
+
+                width: 60%;
+
+                height: 65%;
+
+                bottom: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <!-- Birthday message -->
+        <div class="message">
+
+            <h2>
+                Happy Birthday,
+                <span>LIZEEE!!!</span> 🎂
+            </h2>
+
+            <p>
+                Wishing you a day filled with happiness,
+                laughter and amazing memories!
+            </p>
+
+            <p>
+                May this new year of your life bring you
+                lots of success and beautiful moments.
+            </p>
+
+            <p class="ending">
+                Have an amazing birthday! <br> Love yaa!!! ❤️
+            </p>
+
+        </div>
+
+
+        <!-- TREE -->
+        <div class="tree">
+
+            <!-- Natural tree trunk and branches -->
+            <svg class="tree-svg" viewBox="0 0 500 500">
+
+                <path class="branch" d="
+                    M250 500
+                    C245 440 248 390 250 345
+                    C252 300 245 270 220 245
+                    C195 220 165 205 125 190
+                    " />
+
+                <path class="branch" d="
+                    M250 365
+                    C280 330 315 305 360 290
+                    " />
+
+                <path class="branch" d="
+                    M250 315
+                    C225 285 190 260 150 250
+                    " />
+
+                <path class="branch" d="
+                    M250 270
+                    C275 235 300 205 340 180
+                    " />
+
+                <path class="branch" d="
+                    M250 250
+                    C225 215 210 185 200 145
+                    " />
+
+                <path class="branch" d="
+                    M250 215
+                    C270 175 285 140 300 105
+                    " />
+
+            </svg>
+
+            <!-- Heart crown -->
+            <div id="heartTree"></div>
+
+        </div>
+
+
+        <!-- Countdown -->
+        <div class="countdown">
+
+            <div class="count-title">
+                It's your birthdayyy!!!...
+            </div>
+
+            <div id="timer">
+                00d : 00h : 00m : 00s
+            </div>
+
+        </div>
+
+        <!-- Ground line -->
+        <div class="ground"></div>
+
+    </div>
+
+    <script>
+        const heartTree = document.getElementById("heartTree");
+const tree = document.querySelector(".tree");
+
+
+/* =========================================
+   SETTINGS
+========================================= */
+
+const TOTAL_HEARTS = 1000;
+
+
+/* =========================================
+   HEART SHAPE
+========================================= */
+
+function insideHeart(x, y) {
+
+    return (
+        Math.pow(x * x + y * y - 1, 3)
+        -
+        x * x * Math.pow(y, 3)
+    ) <= 0;
+}
+
+
+/* =========================================
+   CREATE MAIN HEART CROWN
+========================================= */
+
+let created = 0;
+
+while (created < TOTAL_HEARTS) {
+
+    const x =
+        -1.55 + Math.random() * 3.1;
+
+    const y =
+        -1.35 + Math.random() * 2.6;
+
+
+    if (!insideHeart(x, y)) {
+        continue;
+    }
+
+
+    createHeart(
+        50 + (x / 3.1) * 100,
+        50 - (y / 2.6) * 72,
+        18 + Math.random() * 16,
+        2 + Math.random() * 3
+    );
+
+
+    created++;
+}
+
+
+/* =========================================
+   HEART CREATOR
+========================================= */
+
+function createHeart(
+    left,
+    top,
+    size,
+    delay
+) {
+
+    const heart =
+        document.createElement("span");
+
+    heart.className = "heart";
+
+    heart.innerHTML = "♥";
+
+    heart.style.left =
+        left + "%";
+
+    heart.style.top =
+        top + "%";
+
+
+    /*
+       BIG HEARTS
+    */
+
+    heart.style.fontSize =
+        size + "px";
+
+
+    /*
+       Random rotation
+    */
+
+    const rotation =
+        -25 + Math.random() * 50;
+
+
+    heart.style.setProperty(
+        "--rotation",
+        rotation + "deg"
+    );
+
+
+    /*
+       Animation delay
+    */
+
+    heart.style.animationDelay =
+        delay + "s";
+
+
+    heartTree.appendChild(heart);
+}
+
+
+/* =========================================
+   COVER THE BRANCHES
+========================================= */
+
+/*
+   These are approximate paths following
+   the branches in the SVG.
+
+   Each branch receives lots of hearts.
+*/
+
+
+function coverBranch(
+    startX,
+    startY,
+    endX,
+    endY,
+    amount
+) {
+
+    for (let i = 0; i < amount; i++) {
+
+        /*
+           Position along branch
+        */
+
+        const t =
+            Math.random();
+
+
+        let x =
+            startX +
+            (endX - startX) * t;
+
+
+        let y =
+            startY +
+            (endY - startY) * t;
+
+
+        /*
+           Spread hearts around the branch
+           so the brown branch gets covered.
+        */
+
+        x +=
+            (Math.random() - 0.5) *
+            9;
+
+        y +=
+            (Math.random() - 0.5) *
+            9;
+
+
+        createHeart(
+            x,
+            y,
+            18 + Math.random() * 15,
+            2 + Math.random() * 3
+        );
+    }
+}
+
+
+/* =========================================
+   MAIN TRUNK AREA
+========================================= */
+
+coverBranch(
+    51,
+    95,
+    50,
+    60,
+    100
+);
+
+
+/* =========================================
+   LEFT MAIN BRANCH
+========================================= */
+
+coverBranch(
+    50,
+    65,
+    33,
+    38,
+    100
+);
+
+
+/* =========================================
+   LEFT UPPER BRANCH
+========================================= */
+
+coverBranch(
+    50,
+    54,
+    27,
+    31,
+    90
+);
+
+
+/* =========================================
+   LEFT TOP BRANCH
+========================================= */
+
+coverBranch(
+    50,
+    48,
+    38,
+    23,
+    80
+);
+
+
+/* =========================================
+   RIGHT MAIN BRANCH
+========================================= */
+
+coverBranch(
+    50,
+    65,
+    73,
+    42,
+    100
+);
+
+
+/* =========================================
+   RIGHT UPPER BRANCH
+========================================= */
+
+coverBranch(
+    50,
+    55,
+    70,
+    27,
+    90
+);
+
+
+/* =========================================
+   RIGHT TOP BRANCH
+========================================= */
+
+coverBranch(
+    50,
+    47,
+    62,
+    18,
+    80
+);
+
+
+/* =========================================
+   EXTRA HEARTS AROUND BRANCHES
+========================================= */
+
+for (let i = 0; i < 250; i++) {
+
+    const left =
+        25 + Math.random() * 55;
+
+    const top =
+        20 + Math.random() * 60;
+
+
+    createHeart(
+        left,
+        top,
+        10 + Math.random() * 12,
+        2 + Math.random() * 4
+    );
+}
+
+
+/* =========================================
+   FLOATING HEARTS
+========================================= */
+
+for (let i = 0; i < 60; i++) {
+
+    const heart =
+        document.createElement("span");
+
+    heart.className =
+        "floating-heart";
+
+    heart.innerHTML = "♥";
+
+
+    heart.style.left =
+        (5 + Math.random() * 90) +
+        "%";
+
+
+    heart.style.top =
+        (5 + Math.random() * 85) +
+        "%";
+
+
+    heart.style.animationDelay =
+        (4 + Math.random() * 7) +
+        "s";
+
+
+    heart.style.fontSize =
+        (9 + Math.random() * 10) +
+        "px";
+
+
+    tree.appendChild(heart);
+}
+
+
+/* =========================================
+   COUNTDOWN
+========================================= */
+
+const birthday =
+    new Date(
+        "October 10, 2026 00:00:00"
+    );
+
+
+function updateCountdown() {
+
+    const now =
+        new Date();
+
+    const difference =
+        birthday - now;
+
+
+    if (difference <= 0) {
+
+        document.getElementById("timer")
+            .textContent =
+            "🎉 HAPPY BIRTHDAY! 🎉";
+
+        return;
+    }
+
+
+    const days =
+        Math.floor(
+            difference /
+            (1000 * 60 * 60 * 24)
+        );
+
+
+    const hours =
+        Math.floor(
+            (difference /
+            (1000 * 60 * 60)) % 24
+        );
+
+
+    const minutes =
+        Math.floor(
+            (difference /
+            (1000 * 60)) % 60
+        );
+
+
+    const seconds =
+        Math.floor(
+            (difference / 1000) % 60
+        );
+
+
+    document.getElementById("timer")
+        .textContent =
+        `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
+}
+
+
+updateCountdown();
+
+setInterval(
+    updateCountdown,
+    1000
+);
+    </script>
+
+</body>
+
+</html>
